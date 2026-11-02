@@ -1,0 +1,31 @@
+import heapq
+
+def huffman(chars, freq):
+    heap = [[f, [c, ""]] for c, f in zip(chars, freq)]
+    heapq.heapify(heap)
+
+    while len(heap) > 1:
+        a = heapq.heappop(heap)
+        b = heapq.heappop(heap)
+
+        for x in a[1:]:
+            x[1] = "0" + x[1]
+        for x in b[1:]:
+            x[1] = "1" + x[1]
+
+        heapq.heappush(heap, [a[0] + b[0]] + a[1:] + b[1:])
+
+    for c, code in heap[0][1:]:
+        print(c, ":", code)
+
+
+n = int(input("Enter number of characters: "))
+chars, freq = [], []
+
+for i in range(n):
+    c, f = input("Enter character and frequency: ").split()
+    chars.append(c)
+    freq.append(int(f))
+
+print("\nHuffman Codes:")
+huffman(chars, freq)

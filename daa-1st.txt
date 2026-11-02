@@ -1,0 +1,45 @@
+# Non-Recursive Fibonacci Program
+
+def fibonacci_iterative(n):
+    a, b = 0, 1
+
+    for i in range(n):
+        print(a, end=" ")
+        a, b = b, a + b
+
+# Main program
+n = int(input("Enter the number of terms: "))
+
+if n <= 0:
+    print("Please enter a positive number.")
+else:
+    print("Fibonacci Series (Non-Recursive):")
+    fibonacci_iterative(n)
+
+
+
+
+
+
+
+# Recursive Fibonacci Program
+
+def fibonacci_recursive(n):
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fibonacci_recursive(n - 1) + fibonacci_recursive(n - 2)
+
+# Main program
+n = int(input("Enter the number of terms: "))
+
+if n <= 0:
+    print("Please enter a positive number.")
+else:
+    print("Fibonacci Series (Recursive):")
+
+    for i in range(n):
+        print(fibonacci_recursive(i), end=" ")
+
